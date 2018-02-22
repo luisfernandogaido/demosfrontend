@@ -1,0 +1,22 @@
+.ppj-editor {
+    width: 100%;
+    border: 1px solid #999;
+    height: 100%;
+    background: #edede2;
+    display: flex;
+    flex-direction: column;
+}
+
+.ppj-editor > .ppj-editor-botoes {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 40px;
+    background: steelblue;
+}
+
+.ppj-editor > .ppj-editor-area-edicao {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    overflow: auto;
+}

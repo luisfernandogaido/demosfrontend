@@ -1,0 +1,17 @@
+* {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#formulario {
+    width: 500px;
+    height: 800px;
+    background: lightgray;
+    margin: auto;
+}
+
+#container-editor {
+    height: 400px;
+    background: yellow;
+}
