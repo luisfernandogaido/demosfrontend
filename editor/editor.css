@@ -7,16 +7,45 @@
     flex-direction: column;
 }
 
-.ppj-editor > .ppj-editor-botoes {
+.ppj-editor > .botoes {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 40px;
     background: steelblue;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.ppj-editor > .ppj-editor-area-edicao {
+.ppj-editor .botao {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 40px;
+    background-color: #fcf7f7;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 1px;
+}
+
+.ppj-editor .negrito {
+    background-image: url('img/bold.svg');
+}
+
+.ppj-editor .italico {
+    background-image: url('img/italic.svg');
+}
+
+.ppj-editor .sublinhado {
+    background-image: url('img/underline.svg');
+}
+
+.ppj-editor .botao:last-child {
+    margin: 0;
+}
+
+.ppj-editor .ppj-editor-area-edicao {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
     overflow: auto;
 }
+

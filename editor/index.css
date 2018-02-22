@@ -2,10 +2,12 @@
     border: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Arial;
 }
 
 #formulario {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 800px;
     background: lightgray;
     margin: auto;
