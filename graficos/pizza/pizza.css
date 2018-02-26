@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+svg {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+svg path {
+    stroke-width: 1;
+    stroke: steelblue;
+}
