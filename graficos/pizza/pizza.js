@@ -1,63 +1,108 @@
-function criaSvg(tag) {
-  return document.createElementNS('http://www.w3.org/2000/svg', tag);
+'use strict';
+
+function Pizza(container, textoTitulo) {
+
+  this.criaSvg = function(tag) {
+    return document.createElementNS('http://www.w3.org/2000/svg', tag);
+  };
+
+  /**
+   * Container do gráfico, passado pelo construtor.
+   */
+  this.container = container;
+  this.container.classList.add('pizza-container');
+
+  /**
+   * Container do título
+   * @type {HTMLDivElement}
+   */
+  this.titulo = document.createElement('div');
+  this.titulo.className = 'titulo';
+  this.titulo.textContent = textoTitulo;
+  this.container.appendChild(this.titulo);
+
+  /**
+   * Container do SVG e das legendas. Alterar seu flex-flow pode ser útil para mudar o posicionamento deles.
+   * @type {HTMLDivElement}
+   */
+  this.conteudo = document.createElement('div');
+  this.conteudo.className = 'conteudo';
+  this.container.appendChild(this.conteudo);
+
+  /**
+   * O gráfico propriamente dito.
+   * @type {HTMLElement}
+   */
+  this.svg = this.criaSvg('svg');
+  this.conteudo.appendChild(this.svg);
+  this.svg.setAttribute('viewBox', '0 0 1000 1000');
+
+  /**
+   * Lista de legendas com o texto e a cor associada.
+   * @type {HTMLDivElement}
+   */
+  this.legendas = document.createElement('div');
+  this.legendas.className = 'legendas';
+  this.conteudo.appendChild(this.legendas);
+
+  /**
+   * Lista de cores utilizadas.
+   * @type {string[]}
+   */
+  this.cores = [
+    '#1f77b4',
+    '#ff7f0e',
+    '#2ca02c',
+    '#d62728',
+    '#9467bd',
+    '#8c564b',
+    '#e377c2',
+    '#7f7f7f',
+    '#bcbd22',
+    '#17becf',
+  ];
+
 }
 
-function radianos(graus) {
-  return graus * Math.PI / 180;
-}
-
-function seno(graus) {
-  return Math.sin(radianos(graus));
-}
-
-function cosseno(graus) {
-  return Math.cos(radianos(graus));
-}
-
-// for (var i = 0; i < 2; i++) {
-//   var path = criaSvg('path');
-//   var graus = 45 * i;
-//   var x = 500 + 500 * seno(graus);
-//   var y = 500 + 500 * cosseno(graus);
-//   console.log(x, y);
-//   path.setAttribute('d', 'M500 500 L' + x + ' ' + y);
-//   document.querySelector('svg').appendChild(path);
-// }
-
-function gera(valores) {
-  var totalValores = 0;
-  var totalGraus = 180;
-  for (var i = 0; i < valores.length; i++) {
-    totalValores += valores[i];
+/**Renderiza legendas e valores rebendo dados no formato
+ * [{'legenda': 'uma legenda', 'valor': 3}]
+ */
+Pizza.prototype.renderiza = function(dados) {
+  var r = 500;
+  var total = 0;
+  for (var i = 0; i < dados.length; i++) {
+    total += dados[i].valor;
   }
-  var x = 500 + 500 * seno(totalGraus);
-  var y = 500 + 500 * cosseno(totalGraus);
-  for (var i = 0; i < valores.length; i++) {
-    var graus = (360 * valores[i] / totalValores);
-    var d = criaSvg('path');
-    totalGraus += graus;
-    var x2 = 500 + 500 * seno(totalGraus);
-    var y2 = 500 + 500 * cosseno(totalGraus);
-    var path = criaSvg('path');
-    var flag = graus > 180 ? '1' : '0';
-    path.setAttribute('d', 'M500 500 L' + x + ' ' + y + ' A500 500 0 ' + flag + ' 0' + x2 + ' ' + y2 + ' Z');
-    path.setAttribute('fill', randRgb());
-    document.querySelector('svg').appendChild(path);
-    x = x2;
-    y = y2;
+  var angulo, totalAngulos = 0;
+  this.legendas.innerHTML = '';
+  for (var i = 0; i < dados.length; i++) {
+    angulo = 2 * Math.PI * dados[i].valor / total;
+    if (angulo == 2 * Math.PI) {
+      angulo *= 0.999999;
+    }
+    var x1 = r + r * Math.cos(totalAngulos);
+    var y1 = r + r * Math.sin(totalAngulos);
+    totalAngulos += angulo;
+    var x2 = r + r * Math.cos(totalAngulos);
+    var y2 = r + r * Math.sin(totalAngulos);
+    var path = this.criaSvg('path');
+    var flag = angulo > Math.PI ? '1' : '0';
+    var d = 'M' + r + ' ' + r + ' L' + x1 + ' ' + y1 + ' A' + r + ' ' + r + ' 0 ' + flag + ' 1 ' + x2 + ' ' + y2 + ' Z';
+    path.setAttribute('d', d);
+    var cor = this.cores[i % this.cores.length];
+    path.setAttribute('fill', cor);
+    this.svg.appendChild(path);
+    //'<div class="legenda"><div class="cor"></div><div class="texto">isto é algo bem interessante de ser feito</div></div>';
+    var legenda = document.createElement('div');
+    legenda.className = 'legenda';
+    this.legendas.appendChild(legenda);
+    var divCor = document.createElement('div');
+    divCor.className = 'cor';
+    divCor.style.background = cor;
+    legenda.appendChild(divCor);
+    var textoLegenda = document.createElement('div');
+    textoLegenda.className = 'texto';
+    textoLegenda.textContent = dados[i].legenda;
+    legenda.appendChild(textoLegenda);
   }
-}
-
-function randRgb() {
-  var cores = [];
-  for (var i = 0; i < 3; i++) {
-    cores.push(Math.floor(255 * Math.random()) + 1);
-  }
-  return 'rgb(' + cores.join(',') + ')';
-}
-
-//var valores = [209, 15, 8, 3];
-var valores = [1, 1, 5];
-
-gera(valores);
-
+};
