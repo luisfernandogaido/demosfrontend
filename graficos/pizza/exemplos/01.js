@@ -30,6 +30,7 @@ function plota() {
     dados.push({
       legenda: legendas[i],
       valor: valor,
+      numeroAleatorio: Math.floor(100 * Math.random()) + 1,
     });
   }
   pizza.renderiza(dados);
@@ -37,4 +38,7 @@ function plota() {
 }
 
 var pizza = new Pizza(document.getElementById('grafico'), document.getElementById('titulo').value);
+pizza.aoClicar(function(fatia) {
+  console.log(fatia);
+});
 plota();

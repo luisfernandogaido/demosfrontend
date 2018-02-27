@@ -61,7 +61,7 @@ function Pizza(container, textoTitulo) {
     '#bcbd22',
     '#17becf',
   ];
-
+  this.cbClick = null;
 }
 
 /**Renderiza legendas e valores rebendo dados no formato
@@ -94,6 +94,14 @@ Pizza.prototype.renderiza = function(dados) {
     path.setAttribute('d', d);
     var cor = this.cores[i % this.cores.length];
     path.setAttribute('fill', cor);
+    if (this.cbClick) {
+      var cb = this.cbClick;
+      path.addEventListener('click', function() {
+        cb(JSON.parse(this.getAttribute('data-dados')));
+      });
+    }
+    dados[i].cor = cor;
+    path.setAttribute('data-dados', JSON.stringify(dados[i]));
     this.svg.appendChild(path);
     var legenda = document.createElement('div');
     legenda.className = 'legenda';
@@ -111,4 +119,8 @@ Pizza.prototype.renderiza = function(dados) {
 
 Pizza.prototype.setTitulo = function(textoTitulo) {
   this.titulo.textContent = textoTitulo;
+};
+
+Pizza.prototype.aoClicar = function(callback) {
+  this.cbClick = callback;
 };
