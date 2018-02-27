@@ -1,6 +1,7 @@
 .pizza-container {
     display: flex;
     flex-flow: column nowrap;
+    overflow: auto;
 }
 
 .pizza-container > .titulo {

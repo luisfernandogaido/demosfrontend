@@ -11,6 +11,7 @@ function plota() {
       document.getElementById('grafico').classList.remove('erro');
     }
     document.getElementById('erro').textContent = mensagem;
+    document.getElementById('conteudo-fatia').innerText = '';
   }
 
   var legendas = document.getElementById('legendas').value.split(',');
@@ -39,6 +40,6 @@ function plota() {
 
 var pizza = new Pizza(document.getElementById('grafico'), document.getElementById('titulo').value);
 pizza.aoClicar(function(fatia) {
-  console.log(fatia);
+  document.getElementById('conteudo-fatia').innerText = JSON.stringify(fatia);
 });
 plota();
