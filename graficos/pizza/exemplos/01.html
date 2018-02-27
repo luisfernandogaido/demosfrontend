@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exemplo 01</title>
+    <link rel="icon" href="../img/favi-pizz.png" type="image/png"/>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="../pizza.css">
+    <link rel="stylesheet" href="01.css">
+</head>
+<body>
+<div id="painel">
+    <div id="grafico"></div>
+    <div id="controles">
+        <div class="campo">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" onkeyup="atualizaTitulo()" value="um gráfico em pizza">
+        </div>
+        <div class="campo">
+            <label for="titulo">Legendas (separe com vírgulas)</label>
+            <input type="text" id="legendas" value="um,dois,três,quatro" onkeyup="plota()">
+        </div>
+        <div class="campo">
+            <label for="titulo">Valores(separe com vírgulas)</label>
+            <input type="text" id="valores" value="1,2,3,4" onkeyup="plota()">
+        </div>
+        <div id="erro"></div>
+    </div>
+</div>
+<script src="js.js"></script>
+<script src="../pizza.js"></script>
+<script src="01.js"></script>
+</body>
+</html>

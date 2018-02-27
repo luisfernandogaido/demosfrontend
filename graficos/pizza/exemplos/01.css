@@ -1,0 +1,35 @@
+#painel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 1024px) {
+    #painel {
+        flex-direction: row;
+    }
+}
+
+#grafico, #controles {
+    flex: 0 0 50%;
+    border: 1px solid #ccc;
+}
+
+#controles {
+    padding: 1rem;
+}
+
+#controles .campo label {
+    flex: 0 0 33%;
+}
+
+#controles .campo input {
+    flex: 1 1 auto;
+}
+
+#erro {
+    color: lightcoral;
+    text-align: center;
+    margin: 1rem;
+}

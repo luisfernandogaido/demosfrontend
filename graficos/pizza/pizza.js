@@ -108,3 +108,7 @@ Pizza.prototype.renderiza = function(dados) {
     legenda.appendChild(textoLegenda);
   }
 };
+
+Pizza.prototype.setTitulo = function(textoTitulo) {
+  this.titulo.textContent = textoTitulo;
+};
