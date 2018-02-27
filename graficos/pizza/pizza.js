@@ -68,13 +68,16 @@ function Pizza(container, textoTitulo) {
  * [{'legenda': 'uma legenda', 'valor': 3}]
  */
 Pizza.prototype.renderiza = function(dados) {
+  this.legendas.innerHTML = '';
+  while (this.svg.firstChild) {
+    this.svg.removeChild(this.svg.firstChild);
+  }
   var r = 500;
   var total = 0;
   for (var i = 0; i < dados.length; i++) {
     total += dados[i].valor;
   }
   var angulo, totalAngulos = 0;
-  this.legendas.innerHTML = '';
   for (var i = 0; i < dados.length; i++) {
     angulo = 2 * Math.PI * dados[i].valor / total;
     if (angulo == 2 * Math.PI) {
@@ -92,7 +95,6 @@ Pizza.prototype.renderiza = function(dados) {
     var cor = this.cores[i % this.cores.length];
     path.setAttribute('fill', cor);
     this.svg.appendChild(path);
-    //'<div class="legenda"><div class="cor"></div><div class="texto">isto é algo bem interessante de ser feito</div></div>';
     var legenda = document.createElement('div');
     legenda.className = 'legenda';
     this.legendas.appendChild(legenda);
