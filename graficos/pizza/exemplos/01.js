@@ -5,6 +5,11 @@ function atualizaTitulo() {
 function plota() {
 
   function imprimeErro(mensagem) {
+    if (mensagem) {
+      document.getElementById('grafico').classList.add('erro');
+    } else {
+      document.getElementById('grafico').classList.remove('erro');
+    }
     document.getElementById('erro').textContent = mensagem;
   }
 

@@ -16,6 +16,10 @@
     border: 1px solid #ccc;
 }
 
+#grafico.erro {
+    visibility: hidden;
+}
+
 #controles {
     padding: 1rem;
 }
@@ -32,4 +36,5 @@
     color: lightcoral;
     text-align: center;
     margin: 1rem;
+
 }
