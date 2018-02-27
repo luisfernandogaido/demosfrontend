@@ -1,0 +1,1 @@
+Gráficos em pizza feitos em SVG.

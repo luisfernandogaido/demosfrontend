@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pizza Sen e Cos</title>
+    <link rel="icon" href="favi-pizz.png" type="image/png"/>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="02-sencos.css">
+</head>
+<body>
+<div id="flex">
+    <p>
+        O maior desafio de um pedaço de pizza (em SVG, pois na vida real é <i>não comer</i>...) é definir os pontos das
+        extremidades que não são o centro da pizza.
+    </p>
+    <p>
+        Para isso, precisamos de seno e cosseno de ângulos. Por exemplo, 45 graus (pi/4). Seno: 0,785. Cossene: 0,785.
+        O viewBox do svg é 1000x1000. A pizza tem centro em (500,500), portanto. x = 500 + 500*sen(pi/4),
+        e y = 500 - 500*cos(pi/4). Lembrando que as coordenadas do eixo y do SVG são crescentes de cima pra baixo.
+    </p>
+    </pre>
+    <svg id="g" viewBox="0 0 1000 1000">
+        <path d="M500 500 L1000 500 A500 500 0 0 0 853.55339 146.44661 Z "/>
+        <path d="M500 500 L853.55339 146.44661 A500 500 0 0 0 500 0 Z "/>
+    </svg>
+</div>
+<script src="js.js"></script>
+<script src="02-sencos.js"></script>
+</body>
+</html>

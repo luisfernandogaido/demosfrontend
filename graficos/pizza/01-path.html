@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pizza path</title>
+    <link rel="icon" href="favi-pizz.png" type="image/png"/>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="01-path.css">
+</head>
+<body>
+<div id="flex">
+    <p>
+        Um pedaço de pizza é um svg path. Para construí-lo, deve-se:
+    </p>
+    <ol>
+        <li>Posicionar a "caneta" no centro do círculo.</li>
+        <li>Traçar uma linha para a primeira extremidade da pizza.</li>
+        <li>Criar um arco com um círculo contendo x e y valendo o raio do círculo,</li>
+        <li>x-axis-rotation valendo 0 (ou qualquer coisa, dá em nada rotacionar um círculo),</li>
+        <li>large-arc-flag valendo 0 se a fatia for menor que 180 graus (e 1 em caso contrário),</li>
+        <li>sweep-flag valendo 1 se pretende criar fatias no sentido horário, e 0 em caso contrário e</li>
+        <li>definir a outra extremidade da pizza.</li>
+        <li>Fechar a fatia da pizza com "Z"</li>
+    </ol>
+    </pre>
+    <svg id="g" viewBox="0 0 1000 1000">
+        <path d="M500 500 L500 0 A500 500 0 0 1 1000 500 Z "/>
+    </svg>
+</div>
+<script src="js.js"></script>
+<script src="01-path.js"></script>
+</body>
+</html>
