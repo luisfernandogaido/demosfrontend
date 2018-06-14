@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="numero" onblur="formataAliquota(this, 4, 5)" onkeyup="teclaAliquota(this, 4, 5)">
+<script>
+  function formataAliquota(caixa, casasDecimais, maximo) {
+    var valor = caixa.value;
+    var temVirgula = valor.indexOf(',') != -1 || valor.indexOf('.') != -1;
+    var num = parseFloat(valor.replace(',', '.'));
+    if (isNaN(num)) {
+      caixa.value = '';
+      return;
+    }
+    if (num > maximo && !temVirgula) {
+      var divisor = Math.pow(10, valor.length - 1);
+      num = num / divisor;
+    }
+    if (num > maximo) {
+      caixa.value = '';
+      alert('Número não pode ser superior a ' + maximo + '.');
+      return;
+    }
+    caixa.value = num.toFixed(casasDecimais).replace('.', ',');
+  }
+
+  function teclaAliquota(caixa, casaDecimais, maximo) {
+    if (window.event.keyCode == 13) {
+      formataAliquota(caixa, casaDecimais, maximo);
+    }
+  }
+</script>
+</body>
+</html>
