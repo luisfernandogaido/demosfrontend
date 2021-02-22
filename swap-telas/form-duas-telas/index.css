@@ -1,0 +1,34 @@
+* {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.oculto, .oculta {
+    display: none !important;
+}
+
+form {
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid lightgray;
+}
+
+form .campo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+form .campo label {
+    flex: 0 0 100px;
+}
+
+@media (min-width: 768px) {
+    form {
+        width: 500px;
+        margin: auto;
+    }
+}
+

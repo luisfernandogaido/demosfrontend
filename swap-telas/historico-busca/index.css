@@ -1,0 +1,26 @@
+* {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+#container {
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#resultado {
+    flex: 1 1 auto;
+   background: lightgoldenrodyellow;
+    overflow: auto;
+}
+
+@media (min-width: 768px) {
+    #container {
+        width: 500px;
+        margin: 1rem auto 1rem auto;
+        height: calc(100vh - 2rem);
+    }
+}
